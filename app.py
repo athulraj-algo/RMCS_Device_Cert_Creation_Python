@@ -223,6 +223,10 @@ class App(tk.Tk):
         self._set_status(f"{action} {folder}", "green")
         self.device_id.set("")
         self.client_id.set("")
+        self.project_id.set("")
+        self.password.set("")
+        self.password_entry.config(show="•")  # hide the password again
+        self.eye_button.config(text="⚫")  # reset the eye icon to "hidden"
         self.device_entry.focus_set()
 
 

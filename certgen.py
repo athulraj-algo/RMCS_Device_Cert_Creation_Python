@@ -244,7 +244,8 @@ def _info_text(bundle, info, cert):
 
     fingerprint = cert.fingerprint(hashes.SHA256()).hex(":").upper()
     generated = datetime.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
-    not_set = "(not set)"
+    not_set_client = "algo1"
+    not_set_prj = "rmcs1"
 
     return f"""RMCS DEVICE CERTIFICATE
 =======================
@@ -252,8 +253,8 @@ def _info_text(bundle, info, cert):
 Device
 ------
 Device ID    : {info.device_id}
-Client ID    : {info.client_id or not_set}
-Project ID   : {info.project_id or not_set}
+Client ID    : {info.client_id or not_set_client}
+Project ID   : {info.project_id or not_set_prj}
 
 Certificate
 -----------
