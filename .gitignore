@@ -5,3 +5,8 @@ __pycache__/
 .env
 *.key
 *.pem
+resources/
+
+# PyInstaller generated output
+/build/
+/dist/
