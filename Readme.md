@@ -175,13 +175,29 @@ Configure the device and MQTT broker to use the appropriate topics for communica
 
 ## Output Location
 
-All generated device files are stored in the project's root-level `devices` directory, inside a subfolder named after the Device ID.
+Generated device files are stored outside the application, in a subfolder named after the Device ID:
+
+```text
+C:\RMCS\device-certificates\<DEVICE_ID>\
+```
 
 Example:
 
 ```text
-C:\Users\<USERNAME>\PycharmProjects\RMCS_Device_Cert_Creation_Python\devices\A3B4C5D6\
+C:\RMCS\device-certificates\A3B4C5D6\
 ```
+
+The folder is created automatically the first time you click **Generate**. The current location is always shown in the app window under **Device folders are saved in:**.
+
+To use a different location, set the `RMCS_DEVICES_DIR` environment variable before starting the app, for example:
+
+```powershell
+setx RMCS_DEVICES_DIR "D:\RMCS\device-certificates"
+```
+
+Restart the app after changing it.
+
+Because device files are kept separate from the application, updating or replacing the app (or the `.exe`) does not affect existing device certificates. Each folder contains a private key (`device.key`), so keep this location private and backed up, and never add it to source control.
 
 Each device has its own folder, keeping its certificates and configuration information separate from those of other devices.
 
