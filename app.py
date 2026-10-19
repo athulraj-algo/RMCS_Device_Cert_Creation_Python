@@ -21,6 +21,8 @@ from certgen import DeviceInfo
 # Paths: work both as "python app.py" and as a PyInstaller .exe
 # ------------------------------------------------------------------
 
+DEFAULT_DEVICES_DIR = Path(r"C:\RMCS\device-certificates")
+
 def app_dir():
     if getattr(sys, "frozen", False):
         return Path(sys.executable).resolve().parent
@@ -34,8 +36,9 @@ def resources_dir():
 
 
 def devices_dir():
-    return app_dir() / "devices"
-
+    # Set RMCS_DEVICES_DIR to use a different location.
+    custom = os.environ.get("RMCS_DEVICES_DIR")
+    return Path(custom) if custom else DEFAULT_DEVICES_DIR
 
 def open_folder(path):
     if sys.platform.startswith("win"):
